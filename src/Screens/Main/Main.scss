@@ -1,16 +1,49 @@
 $color-main:#111;
-$color-hover:#fff;
+$color-hover:#111;
+$font-main :  'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
 .main{
     width: 100%;
     height: 100%;
 
+   
   
     background-color: #252c4a;
     background-image: url("https://c.pxhere.com/images/28/da/7f726bb30b3446cabded60a5cf06-1442617.jpg!d");
+    // background-image: url("https://t4.ftcdn.net/jpg/03/45/88/07/240_F_345880772_zIT2mkdCzTthplO7xqaGGrMspN0jw0ll.jpg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     position: fixed;
+
+    &__start{
+        position: absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%,-50%);
+
+        margin:5px 0;
+        padding: 20px;
+
+        background-color: #029eff;
+     
+        color:#fff;
+        font-weight: bold;
+        font-size:1.5rem;
+        border:2px solid #111;
+        border-radius: 10px;
+        transition: .5s all;
+        &:focus{
+            border:none;
+            outline: none;
+        }
+        &:hover{
+            cursor: pointer;
+            color:#029eff;
+            background-color: #fff;
+         
+        }
+    }
     &__showcore{
         position: absolute;
         top:50%;
@@ -32,27 +65,38 @@ $color-hover:#fff;
             text-align: center;
         }
         &__playAgain{
-            text-align: center;
-            margin-top:20px;
-
-            padding:12px;
-            border:none;
-            font-weight: bold;
-            font-size:1rem;
-            color:#111;
-            background-color: #fff;
-            transition: all .3s;
-
-            &:focus{
-                outline: none;
-                border: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .choiLai{
+                margin-right:5px;
             }
-            &:hover{
+            &__button{
+               
+                text-align: center;
+                margin-top:20px;
+    
+                padding:12px;
                 border:none;
-                color:#fff;
-                background-color: #111;
-                cursor: pointer;
+                font-weight: bold;
+                font-size:1rem;
+                color:#111;
+                background-color: #fff;
+                transition: all .3s;
+    
+                border-radius: 10px;
+                &:focus{
+                    outline: none;
+                    border: none;
+                }
+                &:hover{
+                    border:none;
+                    color:#fff;
+                    background-color: #111;
+                    cursor: pointer;
+                }
             }
+   
         }
         //Next quest
         &__nextQuest{
@@ -71,11 +115,15 @@ $color-hover:#fff;
         left:50%;
         transform: translate(-50%,-50%);
        
+        font-family: $font-main;
+
         color:$color-main;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
+
+        animation: fadeLeft linear 0.3s 0s 1 alternate ;
         &__left{
             margin-bottom: 20px;
             &__length{
@@ -90,6 +138,19 @@ $color-hover:#fff;
           
             .questText{
                 font-size:1.5rem;
+            }
+            &__img{
+                width: 200px;
+               height: 100px;
+                
+                margin:10px 0;
+    
+                img{
+                    width: 100%;
+                    height: 100%;
+
+                    object-fit: contain;
+                }
             }
         }
         //Right{
@@ -124,6 +185,7 @@ $color-hover:#fff;
 @media only screen and (max-width:930px){
     .main{
         &__showcore{
+            padding:25px;
             h1{
                
                 width: 100%;
@@ -154,6 +216,20 @@ $color-hover:#fff;
                 .questText{
                     max-width: 400px;
                 }
+                //iMAGE
+                &__img{
+                    width: 200px;
+                   height:100px;
+                    
+                    margin:5px 0;
+        
+                    img{
+                        width: 100%;
+                        height: 100%;
+    
+                        object-fit: contain;
+                    }
+                }
             }
             &__right{
                 display: flex;
@@ -171,11 +247,13 @@ $color-hover:#fff;
 @media only screen and (max-width:500px){
     .main{
         &__showcore{
+            padding:20px;
             h1{
                 font-size:1.3rem;
             }
             &__playAgain{
-
+                font-size:0.9rem;
+                padding:6px;
             }
         }
         &__content{
@@ -203,6 +281,21 @@ $color-hover:#fff;
 //375
 @media only screen and (max-width:375px){
     .main{
+        &__showcore{
+            padding:10px;
+            h1{
+                font-size:1rem;
+            }
+            &__playAgain{
+                &__button{
+                    font-size:0.8rem;
+                    padding:6px;
+                }
+              
+                
+               
+            }
+        }
         // max-width: 300px;
         &__content{
             &__left{
@@ -219,5 +312,12 @@ $color-hover:#fff;
                 }
             }
         }
+    }
+}
+@keyframes fadeLeft{
+    from{
+        left:0%;
+    }to{
+        left:50%;
     }
 }
